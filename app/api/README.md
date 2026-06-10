@@ -1,0 +1,1 @@
+This folder is reserved for API route handlers.\n\nPlace server-only route files here under the App Router `app/api/*` pattern.\n

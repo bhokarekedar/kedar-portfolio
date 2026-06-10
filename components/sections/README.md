@@ -1,0 +1,1 @@
+Sections directory: keep composable, presentational components here.\n\nDo NOT add page-level layout or placeholder UI in this directory.\n

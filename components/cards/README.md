@@ -1,0 +1,1 @@
+Cards directory: small reusable card components live here.\n\nOnly add presentational micro-components (no page scaffolds).\n

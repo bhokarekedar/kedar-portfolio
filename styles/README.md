@@ -1,0 +1,1 @@
+This `styles` folder is reserved for modular style files and Tailwind variants.\n\nGlobal styles live at `app/globals.css`.\n
