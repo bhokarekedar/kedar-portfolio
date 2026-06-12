@@ -1,19 +1,35 @@
-export function personSchema({ name, url, sameAs }: { name: string; url?: string; sameAs?: string[] }) {
+export function personSchema({
+  name,
+  url,
+  sameAs,
+  email,
+  jobTitle,
+}: {
+  name: string;
+  url?: string;
+  sameAs?: string[];
+  email?: string;
+  jobTitle?: string;
+}) {
   return {
     "@context": "https://schema.org",
     "@type": "Person",
     name,
     url,
     sameAs,
+    email,
+    jobTitle,
   } as const;
 }
 
-export function websiteSchema({ name, url }: { name: string; url: string }) {
+export function websiteSchema({ name, url, description }: { name: string; url: string; description?: string }) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name,
     url,
+    description,
+    inLanguage: "en",
   } as const;
 }
 

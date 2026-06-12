@@ -1,6 +1,10 @@
 import type { ReactNode } from "react";
 
-export function Container({ children }: { children?: ReactNode }): null {
-  // Structural container scaffold — no markup here by design
-  return null;
+type ContainerProps = {
+  children: ReactNode;
+  className?: string;
+};
+
+export function Container({ children, className = "" }: ContainerProps) {
+  return <div className={`mx-auto w-full max-w-6xl px-5 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
 }

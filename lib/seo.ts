@@ -6,7 +6,7 @@ export function buildOpenGraph({ title, description, path }: { title?: string; d
     title: title || SITE_NAME,
     description: description || SITE_DESCRIPTION,
     url,
-    images: [{ url: `${SITE_URL}/og-image.png` }],
+    images: [{ url: `${SITE_URL}/opengraph-image` }],
   };
 }
 

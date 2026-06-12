@@ -1,18 +1,39 @@
-import { SITE_URL } from "../constants/site";
+import type { MetadataRoute } from "next";
+import { SITE_URL } from "@/constants/site";
 
-const ROUTES = ["/", "/about", "/experience", "/projects", "/apps", "/contact", "/privacy-policy"];
+const ROUTES = [
+  "/",
+  "/about",
+  "/experience",
+  "/projects",
+  "/apps",
+  "/contact",
+  "/privacy-policy",
+  "/terms-and-conditions",
+  "/app-support",
+  "/data-deletion",
+];
 
-function buildSitemap(url: string) {
-  const urls = ROUTES.map((route) => `  <url>\n    <loc>${url}${route}</loc>\n  </url>`).join("\n");
-  return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls}\n</urlset>`;
-}
+const routePriority: Record<string, number> = {
+  "/": 1,
+  "/projects": 0.9,
+  "/apps": 0.9,
+  "/experience": 0.8,
+  "/about": 0.7,
+  "/contact": 0.6,
+  "/privacy-policy": 0.3,
+  "/terms-and-conditions": 0.3,
+  "/app-support": 0.4,
+  "/data-deletion": 0.3,
+};
 
-export async function GET() {
-  const url = SITE_URL || "https://example.com";
-  const xml = buildSitemap(url);
-  return new Response(xml, {
-    headers: {
-      "Content-Type": "application/xml",
-    },
-  });
+export default function sitemap(): MetadataRoute.Sitemap {
+  const lastModified = new Date();
+
+  return ROUTES.map((route) => ({
+    url: `${SITE_URL}${route === "/" ? "" : route}`,
+    lastModified,
+    changeFrequency: route === "/" ? "monthly" : "weekly",
+    priority: routePriority[route] ?? 0.5,
+  }));
 }
