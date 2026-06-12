@@ -17,7 +17,6 @@ export function Footer() {
       <Container className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <p>&copy; {new Date().getFullYear()} {SITE_NAME}. All rights reserved.</p>
-          <p className="mt-1 text-slate-500">Built with Next.js and deployed for fast, searchable pages.</p>
         </div>
         <nav aria-label="Footer navigation">
           <ul className="flex flex-wrap gap-x-4 gap-y-2">
